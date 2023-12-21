@@ -31,9 +31,9 @@ public class Reservation {
     @Column(name = "NUMBER_OF_PERSONS")
     private int number_of_persons;
     @Column(name = "CUSTOMER_ID")
-    private int customer_id;
+    private Long customer_id;
     @Column(name = "COTTAGE_ID")
-    private int cottage_id;
+    private Long cottage_id;
     @Column(name = "STATUS")
     private boolean status;
     }
