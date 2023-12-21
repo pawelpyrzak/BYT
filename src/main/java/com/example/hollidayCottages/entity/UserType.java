@@ -1,4 +1,4 @@
-package com.example.hollidayCottages.model;
+package com.example.hollidayCottages.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,11 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Customer {
+public class UserType {
     int id;
     String name;
-    String surname;
-    char phone_number;
-    boolean regular_customer;
-    int user_id;
 }

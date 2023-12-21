@@ -1,4 +1,4 @@
 package com.example.hollidayCottages.userInterface;
 
-public interface NotificationService {
+public interface CottageManager {
 }
