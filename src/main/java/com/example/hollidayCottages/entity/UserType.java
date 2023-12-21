@@ -10,6 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserType {
-    int id;
-    String name;
+    private int id;
+    private String name;
 }

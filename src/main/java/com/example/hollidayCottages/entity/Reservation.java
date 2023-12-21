@@ -8,7 +8,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,11 +21,11 @@ import java.util.Date;
 public class Reservation {
     @Id
     @Column(name = "RESERVATION_ID")
-    private int reservationId;
+    private Long reservationId;
     @Column(name = "START_DATE")
-    private Date start_date;
-    @Column(name = "END_DATE" )
-    private Date end_date;
+    private LocalDate start_date;
+    @Column(name = "END_DATE")
+    private LocalDate end_date;
     @Column(name = "PRICE" )
     private int price;
     @Column(name = "NUMBER_OF_PERSONS")
@@ -34,4 +36,5 @@ public class Reservation {
     private int cottage_id;
     @Column(name = "STATUS")
     private boolean status;
-}
+    }
+

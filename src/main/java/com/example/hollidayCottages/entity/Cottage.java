@@ -15,14 +15,17 @@ import javax.persistence.*;
 public class Cottage {
     @Id
     @Column(name = "COTTAGE_ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cottageId;
+
     @Column(name = "NAME")
     private String name;
+
     @Column(name = "PRICE_PER_NIGHT")
-    private int price_per_nightAnInt;
+    private double pricePerNight;
+
     @Column(name = "DESCRIPTION")
     private String description;
+
     @Column(name = "MAX_PERSONS")
-    private int max_persons;
-}
+    private Integer maxPersons;}
