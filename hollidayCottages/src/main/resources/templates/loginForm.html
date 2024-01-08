@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<div th:if="${session.id == null}">
+    <form action="/logins" method="post" th:action="@{/logins}">
+        <h2>LOGIN</h2>
+        <div th:if="${error}">
+            <p class="error" th:text="${error}"></p>
+        </div>
+        <div th:if="${success}">
+            <p class="error" th:text="${success}"></p>
+        </div>
+        <label>Email</label>
+        <input type="email" name="email" ><br>
+
+        <label>Password</label>
+        <input type="password" name="password"><br>
+
+        <button type="submit">Login</button>
+        <a href="/singup" class="ca">Create an account</a>
+    </form>
+</div>
+
+<div th:if="${session.id != null}">
+    <form method="post">
+        <h4 th:text="'Witaj, ' + ${name}" class="text-info text-center"></h4><br>
+        <div th:if="${session.Role.equals('Admin')}">
+        <button type="submit" name="admin" class="text-center" formaction="/admin">Admin</button>
+        </div>
+        <button type="submit" name="logout" class="text-center" formaction="/logout">Wyloguj</button>
+       <button> <a href="/account"  class="text-center">Konto</a></button>
+        <button> <a href="/"  class="text-center">Strona główna</a></button>
+
+
+    </form>
+</div>
+</body>
+</html>

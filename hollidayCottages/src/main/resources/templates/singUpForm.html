@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>SIGN UP</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<form action="/signup" method="post" th:action="@{/signup}">
+  <h2>SIGN UP</h2>
+  <div th:if="${error}">
+    <p class="error" th:text="${error}"></p>
+  </div>
+
+  <div th:if="${success}">
+    <p class="success" th:text="${success}"></p>
+  </div>
+
+  <label for="firstname" class="form-label">Imię:</label>
+  <input type="text" class="form-control" id="firstname" name="firstname" th:required="required">
+
+  <label for="lastname" class="form-label">Nazwisko:</label>
+  <input type="text" class="form-control" id="lastname" name="lastname" th:required="required">
+
+  <label for="phone" class="form-label">Numer telefonu:</label>
+  <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" placeholder="123456789" th:required="required">
+
+  <label for="email" class="form-label">Adres e-mail:</label>
+  <input type="email" class="form-control" id="email" name="email" th:required="required">
+
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password" th:required="required"><br>
+
+  <label for="rePassword">Re Password</label>
+  <input type="password" name="rePassword" id="rePassword" th:required="required"><br>
+
+  <button type="submit">Sign Up</button>
+  <a href="/logins" class="ca">Already have an account?</a>
+</form>
+</body>
+</html>

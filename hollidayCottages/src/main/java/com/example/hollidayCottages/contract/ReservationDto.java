@@ -9,13 +9,13 @@ import java.util.Date;
 @Setter
 public class ReservationDto {
     private int id;
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
     private int price;
     private int numberOfPersons;
     private String comments;
-    private CustomerDto customer;
-    private CottageDto cottage;
+    private int customerId;
+    private int cottageId;
     private String status;
 }
 

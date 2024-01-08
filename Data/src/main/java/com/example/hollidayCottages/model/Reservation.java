@@ -1,17 +1,17 @@
 package com.example.hollidayCottages.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.sql.Date;
+
 
 @Getter
 @Setter
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 public class Reservation {
     @Id
@@ -30,14 +30,23 @@ public class Reservation {
 
     private String comments;
 
-    @ManyToOne
-    @JoinColumn(name = "Customer_id", nullable = false)
-    private Customer customer;
+    @JoinColumn(name = "Customer_id")
+    private int customerId;
 
-    @ManyToOne
-    @JoinColumn(name = "Cottage_id", nullable = false)
-    private Cottage cottage;
+    @JoinColumn(name = "Cottage_id")
+    private int cottageId;
 
     private String status;
+
+    public Reservation(Date startDate, Date endDate, int price, int numberOfPersons, String comments, int customerId, int cottageId, String status) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.price = price;
+        this.numberOfPersons = numberOfPersons;
+        this.comments = comments;
+        this.customerId = customerId;
+        this.cottageId = cottageId;
+        this.status = status;
+    }
 }
 

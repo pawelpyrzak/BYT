@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Lista Rezerwacji</h1>
+
+<table border="1">
+    <tr>
+        <th>Domek</th>
+        <th>Data start</th>
+        <th>Data end</th>
+        <th>Status</th>
+    </tr>
+    <tr th:each="reservation : ${reservations}">
+        <td th:text="${reservation.cottageId}"></td>
+        <td th:text="${reservation.startDate}"></td>
+        <td th:text="${reservation.endDate}"></td>
+        <td th:text="${reservation.status}"></td>
+    </tr>
+</table>
+</body>
+</html>
