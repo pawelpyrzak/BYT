@@ -2,7 +2,7 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>SIGN UP</title>
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/signUp.css">
 </head>
 <body>
 <form action="/signup" method="post" th:action="@{/signup}">
@@ -33,8 +33,15 @@
   <label for="rePassword">Re Password</label>
   <input type="password" name="rePassword" id="rePassword" th:required="required"><br>
 
+  <label for="agreement">  </label>
+  <input style="text-align: left" type="checkbox" id="agreement" name="agreement" required>
+  Akceptuję regulamin
+
+  <label for="agreement2">  </label>
+  <input style="text-align: left" type="checkbox" id="agreement2" name="agreement" required>Zgadzam się na przetwarzanie moich danych zgodnie z RODO.
   <button type="submit">Sign Up</button>
   <a href="/logins" class="ca">Already have an account?</a>
+
 </form>
 </body>
 </html>

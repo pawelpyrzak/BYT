@@ -51,6 +51,24 @@ button {
 button:hover{
     opacity: .7;
 }
+.link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+}
+
+/* Change the button color on hover */
+.link:hover {
+    background-color: white;
+    color: #4CAF50;
+}
 .error {
     background: #F2DEDE;
     color: #A94442;

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informacje o Domku</title>
+    <link rel="stylesheet" type="text/css" href="/css/domkiStyle.css">
+</head>
+
+<body>
+<div th:if="${error}">
+    <p class="error" th:text="${error}"></p>
+</div>
+
+<section class="info-section">
+    <h2 th:text="${cottage.getName()}">Opis </h2>
+    <p th:text="${cottage.getDescription()}"></p>
+</section>
+
+<section class="info-section">
+    <h2>Cena:</h2>
+    <p th:text="'Cena za noc:'+${cottage.getPricePerNight()}+'zł'"></p>
+</section>
+
+<section class="info-section">
+    <h2>Galeria</h2>
+    <div class="gallery">
+        <img th:src="@{'/images/domek' + ${cottage.id} + '/zdj1'}" alt="Domku Zdjęcie 1">
+        <img th:src="@{'/images/domek' + ${cottage.id} + '/zdj2'}" alt="Domku Zdjęcie 2">
+        <img th:src="@{'/images/domek' + ${cottage.id} + '/zdj3'}" alt="Domku Zdjęcie 3">
+    </div>
+</section>
+<a th:href="'/reservation/'+${cottage.getId()}" class="link">Zarezerwuj</a>
+</body>
+</html>

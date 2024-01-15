@@ -1,0 +1,75 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+
+}
+
+h1 {
+    color: #333;
+}
+
+h4 {
+    color: #007bff;
+}
+
+input[type="date"],
+input[type="number"],
+input[type="submit"] {
+    margin: 5px;
+    padding: 8px;
+}
+
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+
+table {
+    width: 70%; /* Dostosuj szerokość tabeli według preferencji */
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 8px; /* Dostosuj odstępy w komórkach według preferencji */
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+td button {
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+td form:nth-child(odd) input[type="submit"] {
+    background-color: #ff5858;
+    color: #fff;
+}
+
+td form:nth-child(even) input[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.link:hover {
+    background-color: white;
+    color: #4CAF50;
+}

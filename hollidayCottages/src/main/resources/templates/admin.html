@@ -3,9 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/css/admin.css">
 </head>
 <body>
 <h1>ADMIN PANEL</h1>
-<h4 th:text="'Witaj, ' + ${name}" class="text-info text-center"></h4><br>
+<div th:if="${error}">
+    <p class="error" th:text="${error}"></p>
+</div>
+<form action="/admin/res" method="get" th:action="@{/admin/res}">
+    <input type="date" name="startDate" required>
+    <input type="date" name="endDate" required>
+    <input type="number" name="cottageId" required>
+    <input type="submit" value="Submit">
+</form>
+
+<div th:if="${cusResList != null}">
+    <table>
+        <tr>
+            <th>Data start</th>
+            <th>Data end</th>
+            <th>Liczba osób</th>
+            <th>Status</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Regular Customer</th>
+            <th>Cena</th>
+            <th>Actions</th>
+        </tr>
+
+        <tr th:each="cusRes: ${cusResList}">
+            <td th:text="${cusRes.getReservation().startDate}"></td>
+            <td th:text="${cusRes.getReservation().endDate}"></td>
+            <td th:text="${cusRes.getReservation().getNumberOfPersons()}"></td>
+            <td th:text="${cusRes.getReservation().status}"></td>
+            <td th:text="${cusRes.getCustomer().getName()}"></td>
+            <td th:text="${cusRes.getCustomer().getSurname()}"></td>
+            <td th:text="${cusRes.getCustomer().getPhoneNumber()}"></td>
+            <td th:text="${cusRes.getCustomer().isRegularCustomer()}"></td>
+            <td th:text="${cusRes.getReservation().getPrice()}+' pln'"></td>
+            <td>
+                <form th:action="'/admin/res/Cancel/'+${cusRes.getReservation().getId()}"  th:if="${cusRes.getReservation().status.equals('PENDING')||cusRes.getReservation().status.equals('Confirm')}" method="post">
+                    <input type="submit" value="Cancel">
+                </form>
+                <form th:action="'/admin/res/Confirm/'+${cusRes.getReservation().getId()}" th:if="${cusRes.getReservation().status.equals('PENDING')}" method="post">
+                    <input type="submit" value="Confirm">
+                </form>
+                <form th:action="'/admin/res/Finished/'+${cusRes.getReservation().getId()}" th:if="${cusRes.getReservation().status.equals('Confirm')}" method="post">
+                    <input type="submit" value="Finished">
+                </form>
+            </td>
+        </tr>
+    </table>
+    <a href="/admin" class="link">Ukryj</a>
+</div>
 </body>
 </html>

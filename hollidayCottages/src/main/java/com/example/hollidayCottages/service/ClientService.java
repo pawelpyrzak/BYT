@@ -28,4 +28,16 @@ public class ClientService {
         if (res.isEmpty()) throw new AssertionError("Nie znaleziono rezerwacji");
         return res.get();
     }
+
+    public void cancelReservation(int id) throws ExceptionWithMessage {
+        Optional<Reservation> reservationOptional= data.getReservation().findById(id);
+        if (reservationOptional.isPresent()) {
+            Reservation res = reservationOptional.get();
+            res.setStatus("Cancel");
+            data.getReservation().save(res);
+        }
+        else {
+            throw new ExceptionWithMessage("Reservation not found");
+        }
+    }
 }

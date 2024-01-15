@@ -22,17 +22,12 @@ import java.util.*;
 public class ReservationService {
     final ICatalogData data;
 
-    public List<Reservation> getAllReservations() {
-
-        return null;
-    }
-
     public CusRes CheckData(ReservationDto reservation, int Customer_id, int Cottage_id) throws ExceptionWithMessage {
         String StartDate = reservation.getStartDate();
         String EndDate = reservation.getEndDate();
         String comment = "";
-//        if (!reservation.getComments().isEmpty())
-//            comment = Validator.validate(reservation.getComments());
+        if (reservation.getComments()!=null&&!reservation.getComments().isEmpty())
+            comment = Validator.validate(reservation.getComments());
 //doby
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -45,10 +40,11 @@ public class ReservationService {
         } else if (doby > 14) {
             throw new ExceptionWithMessage("Za długi okres, maksymalnie 14 dni");
         }
-//        List<Reservation> reservations = data.getReservation().findOverlapReservations(reservation.getCottageId(), reservation.getStartDate(), reservation.getEndDate());
-//        if (!reservations.isEmpty()) {
-//            throw new ExceptionWithMessage("Domek jest zajęty w danym terminie");
-//        }
+        List<Reservation> reservations = data.getReservation().findOverlapReservations(reservation.getCottageId(),Date.valueOf(reservation.getStartDate()) , Date.valueOf(reservation.getEndDate()));
+       System.out.println(reservations.size());
+        if (!reservations.isEmpty()) {
+            throw new ExceptionWithMessage("Domek jest zajęty w danym terminie");
+        }
         Optional<Cottage> cottageOptional = data.getCottage().findById(Cottage_id);
         if (cottageOptional.isEmpty()) {
             throw new ExceptionWithMessage("Brak informacji o domku");

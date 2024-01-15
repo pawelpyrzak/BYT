@@ -3,40 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>LOGIN</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
 </head>
 <body>
-<div th:if="${session.id == null}">
-    <form action="/logins" method="post" th:action="@{/logins}">
-        <h2>LOGIN</h2>
-        <div th:if="${error}">
-            <p class="error" th:text="${error}"></p>
-        </div>
-        <div th:if="${success}">
-            <p class="error" th:text="${success}"></p>
-        </div>
-        <label>Email</label>
-        <input type="email" name="email" ><br>
 
-        <label>Password</label>
-        <input type="password" name="password"><br>
+<div class="wrapper">
+    <div th:if="${session.id == null}">
+        <form action="/logins" method="post" th:action="@{/logins}">
+            <h2>LOGIN</h2>
+            <div th:if="${error}">
+                <p class="error" th:text="${error}"></p>
+            </div>
+            <div th:if="${success}">
+                <p class="error" th:text="${success}"></p>
+            </div>
+            <label>Email</label>
+            <input type="email" name="email" ><br>
 
-        <button type="submit">Login</button>
-        <a href="/singup" class="ca">Create an account</a>
-    </form>
+            <label>Password</label>
+            <input type="password" name="password"><br>
+
+            <button type="submit">Login</button>
+            <a href="/signup" class="ca">Create an account</a>
+        </form>
+    </div>
 </div>
-
 <div th:if="${session.id != null}">
-    <form method="post">
-        <h4 th:text="'Witaj, ' + ${name}" class="text-info text-center"></h4><br>
+
+    <h4 th:text="'Witaj, ' + ${name}" class="text-info text-center"></h4><br>
+    <form>
         <div th:if="${session.Role.equals('Admin')}">
-        <button type="submit" name="admin" class="text-center" formaction="/admin">Admin</button>
+            <a href="/admin" class="link">Admin</a>
         </div>
-        <button type="submit" name="logout" class="text-center" formaction="/logout">Wyloguj</button>
-       <button> <a href="/account"  class="text-center">Konto</a></button>
-        <button> <a href="/"  class="text-center">Strona główna</a></button>
-
-
+        <a href="/logout" class="link">Wyloguj</a>
+        <a href="/account" class="link">Konto</a>
+        <a href="/" class="link">Strona główna</a>
     </form>
 </div>
 </body>
