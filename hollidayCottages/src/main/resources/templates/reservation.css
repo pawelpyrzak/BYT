@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+}
+.banner {
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("ai.jpg");
+    background-position: center;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding-bottom: 30px;
+}
+.card-container {
+    display: grid;
+    grid-template-columns: 420px 420px;
+}
+.card-img {
+    background: url("inside.jpg") center/cover no-repeat;
+    height: 570px;
+}
+.banner h1 {
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+}
+.card-content{
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+    height: 570px;
+    width: 530px;
+    text-align: center;
+    padding: 25px 0 10px 0;
+    font-size: 26px;
+    font-weight: 500;
+}
+.form-row{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+}
+form select, form input{
+    display: block;
+    width: 100%;
+    margin: 15px 12px;
+    padding: 5px;
+    font-size: 15px;
+    font-family: 'Poppins' , sans-serif;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #eaeaea;
+    font-weight: 300;
+}
+
+#sendButton {
+    display: none;
+}
+
+
+.customer-info {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.customer-info p {
+    margin-bottom: 5px;
+}
+
+.reservation-button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reservation-button:hover {
+    background-color: #45a049;
+}
+.submit-button {
+    background: linear-gradient(rgba(8, 5, 224, 0.18), #3e6464);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.submit-button:hover {
+    background-color: #0056b3;
+}
+input,
+textarea,
+button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.success {
+    color: #008000;
+}
+
+.error {
+    color: #f00;
+}
+
+
+
+

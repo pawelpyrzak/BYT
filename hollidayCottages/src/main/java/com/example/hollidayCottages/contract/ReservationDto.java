@@ -3,7 +3,7 @@ package com.example.hollidayCottages.contract;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+
 
 @Getter
 @Setter
