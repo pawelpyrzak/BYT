@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/css/index.css">
-    <script src="/js/popup.js"></script>
-    <script src="/js/footer.js"></script>
-    <script src="/js/menu.js"></script>
-    <script src="/js/scrolldown.js"></script>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="../static/js/popup.js"></script>
+    <script src="../static/js/blur.js"></script>
+    <script src="../static/js/footer.js"></script>
+    <script src="../static/js/menu.js"></script>
+    <script src="../static/js/scrolldown.js"></script>
+    <script src="../static/js/calendar.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
@@ -16,29 +21,73 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="overlay" id="overlay"></div>
+<div class="blur" id="blur"></div>
 
 <div class="container">
     <div class="gradient-overlay"></div>
     <div class="gradient-overlay-2"></div>
     <div class="welcome">
         <div class="logo">
-            <img src="/images/logo5.png">
+            <img src="../static/images/logo5.png">
         </div>
-        <section id="section-1">
-            <a id="scroll-btn" href="#about"></a>
+        <section class="section1">
+        <div class="scroll-down" id="scroll-btn">
+            <div class="arrow-circle">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        </div>
         </section>
         <div class="welcome-txt">
             <h2>Holliday Cottage</h2>
-            <h1>Lorem ipsum dolor sit amet </h1>
         </div>
     </div>
-    <div class="center">
-        <button id="show-login">Zaloguj się</button>
-    </div>
+    <section class="availability-check">
+        <div id="result"></div>
+        <div class="input-container">
+            <label for="check-in">
+                <i class="fas fa-calendar"></i>
+                <input type="text" id="check-in" name="checkIn" placeholder="Select date" required>
+            </label>
+        </div>
+
+        <label for="angle-right">
+            <i class="fas fa-angle-right"></i>
+        </label>
+
+        <div class="input-container">
+            <label for="check-out">
+                <i class="fas fa-calendar"></i>
+                <input type="text" id="check-out" name="checkOut" placeholder="Select date" required>
+            </label>
+        </div>
+
+
+        <div class="input-container">
+            <label for="guests" class="with-icon">
+                <i class="fas fa-users"></i>
+                <input type="number" id="guests" name="guests" min="1" required>
+            </label>
+        </div>
+
+        <button type="button" onclick="checkAvailability()" class="search-button">
+            <div class="searchbtn">
+                <i class="fas fa-search"></i>
+            </div>
+        </button>
+    </section>
+
+    <section class="login">
+        <div class="show-login" id="login-btn" onclick="openPopup()">
+            <div class="arrow-circle">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </section>
     <div class="popup">
-        <div class="close-btn">&times;</div>
+        <div class="close-btn" onclick="closePopup()">&times;</div>
         <div class="wrapper">
-            <div th:if="${session.id == null}">
+            <div class="login-form" th:if="${session.id == null}">
                 <form action="/logins" method="post" th:action="@{/logins}">
                     <h2>LOGIN</h2>
                     <div th:if="${error}">
@@ -47,11 +96,11 @@
                     <div th:if="${success}">
                         <p class="error" th:text="${success}"></p>
                     </div>
-                    <label>Email</label>
-                    <input type="email" name="email"><br>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email"><br>
 
-                    <label>Password</label>
-                    <input type="password" name="password"><br>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password"><br>
 
                     <button type="submit">Login</button>
                     <a href="/signup" class="ca">Create an account</a>
@@ -60,6 +109,9 @@
         </div>
     </div>
 </div>
+
+
+
 <div class="container2">
     <div class="navbar">
         <nav>
@@ -70,7 +122,7 @@
                             -->
                 <li><a href="signUpForm.html">Galeria</a></li>
             </ul>
-            <img src="/images/logoblack.png">
+            <img src="../static/images/logoblack.png">
             <ul class="right">
                 <li><a href="signUpForm.html">Regulamin</a></li><!--
                     -->
@@ -81,14 +133,11 @@
         </nav>
     </div>
 </div>
-</div>
+
 
 
 <section class="about" id="about">
     <div class="main">
-        <div class="img">
-            <img src="/images/collage.jpg">
-        </div>
         <div class="about-text">
             <h2>O nas</h2>
             <h1>Lorem ipsum dolor sit amet</h1>
@@ -107,8 +156,21 @@
                 <button type="button">Dowiedz sie wiecej</button>
             </div>
         </div>
-    </div>
+
+        <div class="container21"><div class="att1">
+            <img src="../static/images/Cropped_Image.png">
+        </div>
+            <div class="att2">
+                <img src="../static/images/Cropped_Image%20(1).png">
+            </div>
+            <div class="att3">
+                <img src="../static/images/Image_Editor.png">
+            </div>
+        </div>
+
+        </div>
 </section>
+
 
 
 <section class="attraction-section">
@@ -132,90 +194,74 @@
 
     <div class="container3">
         <div class="att1">
-            <img src="/images/att1.avif">
+            <img src="../static/images/Cropped_Image.png">
         </div>
         <div class="att2">
-            <img src="/images/2.jpg">
+            <img src="../static/images/Cropped_Image%20(1).png">
         </div>
         <div class="att3">
-            <img src="/images/3.jpg">
+            <img src="../static/images/Image_Editor.png">
         </div>
     </div>
 </section>
 
+<div class="container4">
+    <div class="gradient-overlay-three"></div>
+    <div class="gradient-overlay-four"></div>
+</div>
 <div class="row">
-    <div class="col">
-        <h1>Lorem ipsum </h1>
+    <div class="about-houses-txt">
+        <h2>Nasze najpopularniejsze domki</h2>
+        <h1>Lorem ipsum dolor sit amet</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
             magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
             commodo
             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-            id est laborum. </p>
-        <button type="button">Dowiedz sie wiecej</button>
+            id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo
+            consequat.</p>
     </div>
     <div class="card-wrapper">
         <div class="card card1">
             <h5>Domek1</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore
-                magna aliqua.</p>
-            <div class="details">
-                <p><i class="fas fa-money-bill-wave"></i> Cena: $200/noc</p>
-                <p><i class="fas fa-users"></i> Osoby: 10</p>
-            </div>
         </div>
         <div class="card card2">
             <h5>Domek2</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore
-                magna aliqua.</p>
-            <div class="details">
-                <p><i class="fas fa-money-bill-wave"></i> Cena: $200/noc</p>
-                <p><i class="fas fa-users"></i> Osoby: 10</p>
-            </div>
+
         </div>
         <div class="card card3">
             <h5>Domek3</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore
-                magna aliqua.</p>
-            <div class="details">
-                <p><i class="fas fa-money-bill-wave"></i> Cena: $200/noc</p>
-                <p><i class="fas fa-users"></i> Osoby: 10</p>
-            </div>
         </div>
         <div class="card card4">
             <h5>Domek4</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore
                 magna aliqua.</p>
-            <div class="details">
-                <p><i class="fas fa-money-bill-wave"></i> Cena: $200/noc</p>
-                <p><i class="fas fa-users"></i> Osoby: 10</p>
-            </div>
         </div>
     </div>
 </div>
 
 
+
+
+
+
+
+
+
+
+
 <footer class="sticky-footer">
     <div class="row">
         <div class="col">
-            <img src="/images/logo5.png" class="logo">
+            <img src="../static/images/logo5.png" class="logo">
             <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vulputate id mi cursus scelerisque.
                 Phasellus sem lorem, aliquet vitae molestie ut, rhoncus quis erat.</p>
         </div>
-        <div class="col">
-            <h3>Nasza lokalizacja
-                <div class="underline"><span></span></div>
-            </h3>
-            <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15485.850699849016!2d18.493072615924838!3d54.76353161196792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fdad42e75d7e95%3A0x558d767b1dfcef46!2zQ2hhxYJ1cHkgUGxhxbxh!5e0!3m2!1sen!2spl!4v1705071641315!5m2!1sen!2spl"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
+
 
         <div class="col">
             <h3>Lorem ipsum
@@ -254,6 +300,16 @@
                 <i class="fa-brands fa-facebook"></i>
                 <i class="fa-brands fa-twitter"></i>
                 <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div class="col">
+                <h3>Nasza lokalizacja
+                    <div class="underline"><span></span></div>
+                </h3>
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15485.850699849016!2d18.493072615924838!3d54.76353161196792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fdad42e75d7e95%3A0x558d767b1dfcef46!2zQ2hhxYJ1cHkgUGxhxbxh!5e0!3m2!1sen!2spl!4v1705071641315!5m2!1sen!2spl"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
         </div>
     </div>
