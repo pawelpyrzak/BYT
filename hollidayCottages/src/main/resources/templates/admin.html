@@ -29,6 +29,7 @@
             <th>Phone Number</th>
             <th>Regular Customer</th>
             <th>Cena</th>
+            <th>Dodatkowe uwagi</th>
             <th>Actions</th>
         </tr>
 
@@ -42,14 +43,20 @@
             <td th:text="${cusRes.getCustomer().getPhoneNumber()}"></td>
             <td th:text="${cusRes.getCustomer().isRegularCustomer()}"></td>
             <td th:text="${cusRes.getReservation().getPrice()}+' pln'"></td>
+            <td th:text="${cusRes.getReservation().getComments()}"></td>
+
             <td>
-                <form th:action="'/admin/res/Cancel/'+${cusRes.getReservation().getId()}"  th:if="${cusRes.getReservation().status.equals('PENDING')||cusRes.getReservation().status.equals('Confirm')}" method="post">
+                <form th:action="'/admin/res/Cancel/'+${cusRes.getReservation().getId()}"
+                      th:if="${cusRes.getReservation().status.equals('PENDING')||cusRes.getReservation().status.equals('Confirm')}"
+                      method="post">
                     <input type="submit" value="Cancel">
                 </form>
-                <form th:action="'/admin/res/Confirm/'+${cusRes.getReservation().getId()}" th:if="${cusRes.getReservation().status.equals('PENDING')}" method="post">
+                <form th:action="'/admin/res/Confirm/'+${cusRes.getReservation().getId()}"
+                      th:if="${cusRes.getReservation().status.equals('PENDING')}" method="post">
                     <input type="submit" value="Confirm">
                 </form>
-                <form th:action="'/admin/res/Finished/'+${cusRes.getReservation().getId()}" th:if="${cusRes.getReservation().status.equals('Confirm')}" method="post">
+                <form th:action="'/admin/res/Finished/'+${cusRes.getReservation().getId()}"
+                      th:if="${cusRes.getReservation().status.equals('Confirm')}" method="post">
                     <input type="submit" value="Finished">
                 </form>
             </td>
@@ -57,5 +64,13 @@
     </table>
     <a href="/admin" class="link">Ukryj</a>
 </div>
+<form th:action="'/admin/customer/'" action="/admin/customer" method="post">
+    <input type="email" name="email">
+    Stały klient
+    <div th:if="${customer}">
+        <p th:text="'Stały klient?'+${customer.isRegularCustomer()}"></p>
+    </div>
+    <input type="submit">
+</form>
 </body>
 </html>

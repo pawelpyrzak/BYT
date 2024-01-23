@@ -5,15 +5,17 @@ import com.example.hollidayCottages.model.Customer;
 import com.example.hollidayCottages.model.Reservation;
 import com.example.hollidayCottages.repositories.ICatalogData;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@AllArgsConstructor
+
 @Service
+@RequiredArgsConstructor
 public class ClientService {
-    private ICatalogData data;
+    private final ICatalogData data;
 
     public List<Reservation> getAllReservation(int id) throws ExceptionWithMessage {
         Optional<Customer> customer  =data.getCustomer().findCustomerByUserId(id);

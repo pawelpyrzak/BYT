@@ -5,6 +5,7 @@ import com.example.hollidayCottages.Exceptions.NotFoundException;
 import com.example.hollidayCottages.contract.CusRes;
 import com.example.hollidayCottages.service.AdminService;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value = "/admin")
+@RequiredArgsConstructor
 public class AdminPanelController {
     private final AdminService service;
     private String url;
-
-    public AdminPanelController(AdminService service) {
-        this.service = service;
-    }
 
     @GetMapping()
     public String adminDashboard(HttpSession session, Model model) throws NotFoundException {
@@ -45,11 +43,27 @@ public class AdminPanelController {
     @PostMapping("/res/{action}/{id}")
     public String handleReservationAction(@PathVariable int id, @PathVariable String action, Model model) {
         try {
-
             service.changeStatusOfReservation(id, action);
         } catch (ExceptionWithMessage e) {
             model.addAttribute("error", e.getMessage());
         }
         return "redirect:/admin" + url;
+    }
+    @GetMapping("/customers")
+    public String getCustomers() {
+        return "admin";
+    }
+    @PostMapping("/customers")
+    public String getCustomersByEmail(@RequestParam String email, Model model) {
+        if (!email.matches("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$")) {
+            model.addAttribute("error", "Invalid email format");
+        }
+        try {
+            var customer = service.GetCustomerByEmail(email);
+            model.addAttribute("customer", customer);
+        } catch (ExceptionWithMessage e) {
+            model.addAttribute("error", e.getMessage());
+        }
+        return "admin";
     }
 }

@@ -1,15 +1,11 @@
 package com.example.hollidayCottages.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 public class Customer {
     @Id
@@ -32,5 +28,11 @@ public class Customer {
     @JoinColumn(name = "User_id", nullable = false)
     private User user;
 
-    // Constructors, getters, setters, etc.
+    public Customer(String name, String surname, String phoneNumber, boolean regularCustomer, User user) {
+        this.name = name;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
+        this.regularCustomer = regularCustomer;
+        this.user = user;
+    }
 }

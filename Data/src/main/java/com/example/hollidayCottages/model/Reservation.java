@@ -1,11 +1,11 @@
 package com.example.hollidayCottages.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.sql.Date;
 
 
@@ -20,7 +20,6 @@ public class Reservation {
 
     @Column(name = "start_date")
     private Date startDate;
-
     @Column(name = "end_date")
     private Date endDate;
 

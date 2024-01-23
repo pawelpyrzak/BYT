@@ -9,16 +9,11 @@ import org.springframework.stereotype.Repository;
 @Getter
 public class DomkiDataCatalog implements ICatalogData {
 
-
     private final CottageRepository cottage;
 
     private final  CustomerRepository customer;
 
-    private final PromotionRepository promotion;
-
     private final  ReservationRepository reservation;
-
-    private final  ReviewRepository review;
 
     private final UserRepository user;
 

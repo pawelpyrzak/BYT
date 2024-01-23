@@ -6,13 +6,14 @@ import com.example.hollidayCottages.model.Customer;
 import com.example.hollidayCottages.model.User;
 import com.example.hollidayCottages.repositories.ICatalogData;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@AllArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class LoginService {
     private final ICatalogData data;
 

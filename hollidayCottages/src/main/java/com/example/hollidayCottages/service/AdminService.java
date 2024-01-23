@@ -2,10 +2,10 @@ package com.example.hollidayCottages.service;
 
 import com.example.hollidayCottages.Exceptions.ExceptionWithMessage;
 import com.example.hollidayCottages.contract.CusRes;
-import com.example.hollidayCottages.model.Customer;
-import com.example.hollidayCottages.model.Reservation;
+import com.example.hollidayCottages.model.*;
 import com.example.hollidayCottages.repositories.ICatalogData;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AdminService {
     private final ICatalogData data;
 
@@ -34,15 +34,25 @@ public class AdminService {
         return data.getCottage().findLastCottageId();
     }
 
-    public void changeStatusOfReservation(int id,String status) throws ExceptionWithMessage {
+    public void changeStatusOfReservation(int id, String status) throws ExceptionWithMessage {
         var reservationOptional = data.getReservation().findById(id);
         if (reservationOptional.isPresent()) {
             Reservation res = reservationOptional.get();
             res.setStatus(status);
             data.getReservation().save(res);
-        }
-        else {
+        } else {
             throw new ExceptionWithMessage("Reservation not found");
         }
     }
+
+    public Customer GetCustomerByEmail(String email) throws ExceptionWithMessage {
+        Optional<User> userOptional = data.getUser().findByEmail(email);
+        if (userOptional.isEmpty())
+            throw new ExceptionWithMessage("Nie poprawny email");
+        Optional<Customer> customerOptional= data.getCustomer().findCustomerByUserId(userOptional.get().getId());
+        if (customerOptional.isEmpty())
+            throw new ExceptionWithMessage("Nie znaleziono Customer");
+        return customerOptional.get();
+    }
+
 }

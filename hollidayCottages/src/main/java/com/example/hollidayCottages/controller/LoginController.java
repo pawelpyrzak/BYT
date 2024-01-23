@@ -5,6 +5,7 @@ import com.example.hollidayCottages.model.User;
 import com.example.hollidayCottages.service.LoginService;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class LoginController {
     private final LoginService service;
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
@@ -48,4 +49,5 @@ public class LoginController {
     public String loginBadUrl() {
         return "redirect:/logins";
     }
+
 }

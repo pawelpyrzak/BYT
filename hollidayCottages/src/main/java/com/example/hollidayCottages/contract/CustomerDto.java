@@ -17,6 +17,6 @@ public class CustomerDto {
 
     private boolean regularCustomer;
 
-    private UserDto user;
+    private UserFullDto user;
 
 }

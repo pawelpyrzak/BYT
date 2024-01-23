@@ -4,12 +4,13 @@ import com.example.hollidayCottages.Exceptions.ExceptionWithMessage;
 import com.example.hollidayCottages.model.Cottage;
 import com.example.hollidayCottages.repositories.ICatalogData;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CottagePageService {
     private final ICatalogData data;
     public int getLastId() {

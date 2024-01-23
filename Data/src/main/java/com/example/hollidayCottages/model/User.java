@@ -9,7 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 public class User {
     @Id
@@ -23,4 +22,10 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "user_type_id")
     private UserType userType;
+
+    public User(String email, String password, UserType userType) {
+        this.email = email;
+        this.password = password;
+        this.userType = userType;
+    }
 }

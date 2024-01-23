@@ -6,13 +6,14 @@ import com.example.hollidayCottages.model.Cottage;
 import com.example.hollidayCottages.service.CottagePageService;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CottagePageController {
 private final CottagePageService service;
     @GetMapping("/domek/{Id}")

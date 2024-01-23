@@ -3,45 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>LOGIN</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/logo.css">
+    <script src="/js/login.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="main">
+    <div class="logo">
+        <a href="/"><img src="/images/logo5.png" alt="logo"></a>
+        <div class="welcome-txt">
+            <h2>Holiday Cottage</h2>
+        </div>
+    </div>
+</div>
 
-<div class="wrapper">
+<div class="login-container">
     <div th:if="${session.id == null}">
-        <form action="/logins" method="post" th:action="@{/logins}">
+        <form id="loginForm" action="/logins" method="post" th:action="@{/logins}">
             <h2>LOGIN</h2>
+
             <div th:if="${error}">
                 <p class="error" th:text="${error}"></p>
             </div>
+
             <div th:if="${success}">
                 <p class="error" th:text="${success}"></p>
             </div>
-            <label>Email</label>
-            <input type="email" name="email" ><br>
 
-            <label>Password</label>
-            <input type="password" name="password"><br>
+            <div class="form-step" id="step1">
+                <label for="email" class="form-label">Adres e-mail:</label>
+                <input type="email" class="form-control" id="email" name="email" th:required="required">
+                <button type="button" onclick="nextStep(1)">Next</button>
+            </div>
 
-            <button type="submit">Login</button>
-            <a href="/signup" class="ca">Create an account</a>
+            <div class="form-step" id="step2">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" th:required="required"><br>
+
+                <button type="submit">Login</button>
+                <a href="/signup" class="ca">Create an account</a>
+            </div>
         </form>
     </div>
-</div>
-<div th:if="${session.id != null}">
+    <div th:if="${session.id != null}">
 
-    <h4 th:text="'Witaj, ' + ${name}" class="text-info text-center"></h4><br>
-    <form>
-        <div th:if="${session.Role.equals('Admin')}">
-            <a href="/admin" class="link">Admin</a>
-        </div>
-        <a href="/logout" class="link">Wyloguj</a>
-        <a href="/account" class="link">Konto</a>
-        <a href="/" class="link">Strona główna</a>
-    </form>
+        <h4 th:text="'Witaj, ' + ${name}" class="text-info text-center"></h4><br>
+        <form>
+            <div th:if="${session.Role.equals('Admin')}">
+                <a href="/admin" class="link">Admin</a>
+            </div>
+            <a href="/logout" class="link">Wyloguj</a>
+            <a href="/account" class="link">Konto</a>
+        </form>
+    </div>
 </div>
 </body>
 </html>

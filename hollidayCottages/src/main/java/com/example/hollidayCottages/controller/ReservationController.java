@@ -1,59 +1,61 @@
 package com.example.hollidayCottages.controller;
 
 import com.example.hollidayCottages.Exceptions.ExceptionWithMessage;
+import com.example.hollidayCottages.Exceptions.NotFoundException;
 import com.example.hollidayCottages.contract.CusRes;
-import com.example.hollidayCottages.contract.ReservationDto;
 import com.example.hollidayCottages.model.Reservation;
 import com.example.hollidayCottages.service.ReservationService;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+@RequiredArgsConstructor
 @Controller
 public class ReservationController {
     private final ReservationService service;
-    private Reservation reservation=new Reservation();
+    private Reservation reservation;
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
-    public ReservationController(ReservationService service) {
-        this.service = service;
-    }
-
-    @GetMapping("/reservation/{CId}")
-    public String showLoginForm(HttpSession session, Model model, @PathVariable int CId) {
-
+    @GetMapping("/reservation/{id}")
+    public String showLoginForm(HttpSession session, @PathVariable int id) {
+        session.setAttribute("id", 8);
+        session.setAttribute("Role","User");
         if (session == null || session.getAttribute("id") == null) {
             return "NoLogin";
         }
-        reservation.setCottageId(CId);
+        if(id<=0||id>4){
+            throw new NotFoundException("złe id");
+        }
         return "Reservation";
     }
 
-    @PostMapping("/reservation")
-    public String validateData(ReservationDto reservationDto, HttpSession session, Model model) {
-        System.out.println("post");
-        int id = (int) session.getAttribute("id");
+    @PostMapping("/reservation/{cId}")
+    public String validateData(Reservation reservation, HttpSession session, Model model, @PathVariable int cId) {
         try {
-            int CId = reservation.getCottageId();
-            CusRes res = service.CheckData(reservationDto, id, CId);
-            reservation = res.getReservation();
-            session.setAttribute("Res",res.getReservation());
+            reservation.setCottageId(cId);
+            CusRes res = service.CheckData(reservation, (Integer) session.getAttribute("id"));
+            this.reservation = res.getReservation();
             model.addAttribute("Customer", res.getCustomer());
             model.addAttribute("Res", res.getReservation());
+            LOGGER.info("Sprawdzono dane");
         } catch (ExceptionWithMessage e) {
+            LOGGER.error(e.getMessage());
             model.addAttribute("error", e.getMessage());
         }
         return "Reservation";
     }
 
     @PostMapping("/ResAdd")
-    public String saveReservation(Model model,HttpSession session) {
-        model.addAttribute("success", "rezerwacja udana");
-        Reservation res= (Reservation) session.getAttribute("Res");
-        System.out.println(res.getCustomerId());
-        service.saveRes((Reservation) session.getAttribute("Res"));
-        return "redirect:/reservation/"+res.getCottageId();
+    public String saveReservation(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("success", "Rezerwacja przyjęta");
+        LOGGER.info("Rezerwacja udana");
+        service.saveRes(reservation);
+        return "redirect:/reservation/" + reservation.getCottageId();
     }
 }

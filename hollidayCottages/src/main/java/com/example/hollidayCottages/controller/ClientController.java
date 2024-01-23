@@ -5,6 +5,7 @@ import com.example.hollidayCottages.model.Reservation;
 import com.example.hollidayCottages.service.ClientService;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RequestMapping("/account")
 public class ClientController {
-    private ClientService service;
+    private final ClientService service;
 
     @GetMapping()
     public String showReservations(HttpSession session, Model model) {
