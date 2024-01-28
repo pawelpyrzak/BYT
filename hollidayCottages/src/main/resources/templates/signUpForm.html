@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SIGN UP</title>
+    <script src="/js/signUp.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/signUp.css">
+    <link rel="stylesheet" type="text/css" href="/css/logo.css">
+</head>
+<body>
+<div class="main">
+    <div class="logo">
+        <a href="/"><img src="/images/logo5.png" alt="logo"></a>
+        <div class="welcome-txt">
+            <h2>Holiday Cottage</h2>
+        </div>
+    </div>
+</div>
+
+<div class="signup-container">
+    <form id="signupForm" action="/signup" method="post" th:action="@{/signup}">
+        <h2>SIGN UP</h2>
+
+        <div th:if="${error}">
+            <p class="error" th:text="${error}"></p>
+        </div>
+
+        <div th:if="${success}">
+            <p class="success" th:text="${success}"></p>
+        </div>
+
+        <!-- KROK 1 -->
+        <div class="form-step" id="step1">
+            <label for="firstname" class="form-label">Imię:</label>
+            <input type="text" class="form-control" id="firstname" name="firstname" th:required="required">
+
+            <label for="lastname" class="form-label">Nazwisko:</label>
+            <input type="text" class="form-control" id="lastname" name="lastname" th:required="required">
+            <button type="button" onclick="nextStep(1)">Następny</button>
+            <a href="/logins" class="ca">Masz już konto?</a>
+        </div>
+
+        <!-- KROK 2 -->
+        <div class="form-step" id="step2">
+            <label for="phone" class="form-label">Numer telefonu:</label>
+            <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" placeholder="123456789" th:required="required">
+
+            <label for="email" class="form-label">Adres e-mail:</label>
+            <input type="email" class="form-control" id="email" name="email" th:required="required">
+            <button type="button" onclick="nextStep(2)">Następny</button>
+            <button type="button" onclick="nextStep(0)">Poprzedni</button>
+
+        </div>
+
+        <!-- KROK 3 -->
+        <div class="form-step" id="step3">
+
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" th:required="required"><br>
+
+            <label for="rePassword">Re Password</label>
+            <input type="password" name="rePassword" id="rePassword" th:required="required"><br>
+
+            <label for="agreement">  </label>
+            <input style="text-align: left" type="checkbox" id="agreement" name="agreement" required>
+            Akceptuje regulamin
+
+            <label for="agreement2">  </label>
+            <input style="text-align: left" type="checkbox" id="agreement2" name="agreement" required>Zgadzam się na przetwarzanie moich danych zgodnie z RODO.
+            <button type="submit">Załóż konto</button>
+            <button type="button" onclick="nextStep(1)">Poprzedni</button>
+
+
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

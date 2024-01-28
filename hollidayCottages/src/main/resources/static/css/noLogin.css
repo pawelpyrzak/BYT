@@ -24,16 +24,16 @@ h1 {
 
 a {
     text-decoration: none;
-    color: #3E6464FF;
     font-size: 30px;
     padding: 10px 20px;
     border: 1px solid #3E6464FF;
     border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
     margin-top: 20px;
+    background-color: #3E6464FF;
+    color: #fff;
 }
 
 a:hover {
-    background-color: #3E6464FF;
-    color: #fff;
+    background-color: white;
+    color: #3E6464FF;
 }

@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="/css/account.css">
+    <link rel="stylesheet" type="text/css" href="/css/logo.css">
 </head>
 <body>
+<div class="main">
+    <div class="logo">
+        <a href="/"><img src="/images/logo5.png" alt="logo"></a>
+        <div class="welcome-txt">
+            <h2>Holiday Cottage</h2>
+        </div>
+    </div>
+</div>
+
+
 <h1>Lista Rezerwacji</h1>
 
 <table>
@@ -27,7 +38,7 @@
         <td th:text="${reservation.getNumberOfPersons()}"></td>
         <td th:text="${reservation.status}"></td>
         <td th:if="${reservation.status.equals('PENDING')}">
-        <form th:action="'/account/Cancel/'+${reservation.getId()}" method="post">
+        <form th:action="'/account/cancel/'+${reservation.getId()}" method="post">
                 <input type="submit" value="Cancel">
             </form>
         </td>

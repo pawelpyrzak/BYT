@@ -6,6 +6,8 @@ import com.example.hollidayCottages.contract.CusRes;
 import com.example.hollidayCottages.service.AdminService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +20,14 @@ import java.util.List;
 public class AdminPanelController {
     private final AdminService service;
     private String url;
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
     @GetMapping()
     public String adminDashboard(HttpSession session, Model model) throws NotFoundException {
         if (session != null && session.getAttribute("Role") != null && session.getAttribute("Role").equals("Admin")) {
             return "admin";
         } else {
+            LOGGER.error("Brak uprawnień");
             throw new NotFoundException("Brak uprawnień");
         }
     }
@@ -32,11 +36,13 @@ public class AdminPanelController {
     public String getReservationsForPeriodAndCottage(@RequestParam String startDate, @RequestParam String endDate, @RequestParam int cottageId, Model model) {
         if (startDate.isEmpty() || endDate.isEmpty() || cottageId < 0 || cottageId > service.getLastId()) {
             model.addAttribute("error", "Nie poprawne dane");
-            return "admin";
+            LOGGER.error("Nie poprawne dane");
+        }else {
+            url = "/res?startDate=" + startDate + "&endDate=" + endDate + "&cottageId=" + cottageId;
+            List<CusRes> cusResList = service.getReservationAndCustomer(startDate, endDate, cottageId);
+            model.addAttribute("cusResList", cusResList);
+            LOGGER.info("Wyświetlanie rezerwacji");
         }
-        url = "/res?startDate=" + startDate + "&endDate=" + endDate + "&cottageId=" + cottageId;
-        List<CusRes> cusResList = service.getReservationAndCustomer(startDate, endDate, cottageId);
-        model.addAttribute("cusResList", cusResList);
         return "admin";
     }
 
@@ -45,25 +51,9 @@ public class AdminPanelController {
         try {
             service.changeStatusOfReservation(id, action);
         } catch (ExceptionWithMessage e) {
+            LOGGER.error(e.getMessage());
             model.addAttribute("error", e.getMessage());
         }
         return "redirect:/admin" + url;
-    }
-    @GetMapping("/customers")
-    public String getCustomers() {
-        return "admin";
-    }
-    @PostMapping("/customers")
-    public String getCustomersByEmail(@RequestParam String email, Model model) {
-        if (!email.matches("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$")) {
-            model.addAttribute("error", "Invalid email format");
-        }
-        try {
-            var customer = service.GetCustomerByEmail(email);
-            model.addAttribute("customer", customer);
-        } catch (ExceptionWithMessage e) {
-            model.addAttribute("error", e.getMessage());
-        }
-        return "admin";
     }
 }

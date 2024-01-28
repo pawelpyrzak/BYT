@@ -1,0 +1,185 @@
+.welcome-txt h2{
+    font-family: 'Poppins' , sans-serif;
+    font-size: 18px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-bottom: 0;
+    margin-top: -10px;
+}
+.welcome-txt {
+    text-align: center;
+    margin-left: 20px;
+    padding-bottom: 0;
+}
+
+.logo {
+    text-align: center;
+}
+.logo img:hover {
+    filter: brightness(0%);
+}
+.logo img {
+    display: block;
+    margin: 10px auto 10px 45%;
+    max-width: 12%;
+    height: auto;
+}
+.sticky-footer {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    background: linear-gradient(rgb(255, 255, 255), rgba(54, 27, 27, 0.64));
+    color: #fff;
+    padding: 50px 0;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+
+}
+
+.sticky-footer .row {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.sticky-footer .col {
+    flex-basis: calc(25% - 20px); /* Dodaj odstęp między kolumnami */
+    padding: 20px;
+}
+
+.sticky-footer .col:nth-child(2), .sticky-footer .col:nth-child(3) {
+    flex-basis: calc(15% - 20px); /* Dodaj odstęp między kolumnami */
+}
+
+.sticky-footer .logo {
+    width: 80px;
+    margin-bottom: 20px; /* Dostosuj margines */
+}
+
+.sticky-footer .col h3 {
+    margin-bottom: 20px; /* Dostosuj margines */
+    position: relative;
+}
+
+.sticky-footer .email-id {
+    border-bottom: 1px solid #cccccc;
+    margin: 10px 0;
+}
+
+.sticky-footer ul li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.sticky-footer ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.sticky-footer form {
+    padding-bottom: 10px; /* Dostosuj padding */
+    margin-bottom: 30px; /* Dostosuj margines */
+}
+
+.sticky-footer form .far {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.sticky-footer form input {
+    width: 70%; /* Dostosuj szerokość inputu */
+    background: transparent;
+    color: #cccccc;
+    border: 0;
+    outline: none;
+}
+
+.sticky-footer form button {
+    background: transparent;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+.sticky-footer form button .fas {
+    font-size: 16px;
+    color: #ccc;
+}
+
+.sticky-footer .social-icons .fa-brands {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.sticky-footer hr {
+    width: 90%;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    margin: 20px auto;
+}
+
+.sticky-footer .copyright {
+    text-align: center;
+}
+
+.sticky-footer .underline {
+    width: 100%;
+    height: 5px;
+    background: #3e6464;
+    border-radius: 3px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    overflow: hidden;
+}
+
+.sticky-footer .underline span {
+    width: 15px;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    animation: moving 2s linear infinite;
+}
+
+.sticky-footer .map {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.sticky-footer .map iframe {
+    width: 100%;
+    height: 170px;
+    border: 1px solid #ccc;
+}
+
+@keyframes moving {
+    0% {
+        left: -20px;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .sticky-footer .col {
+        flex-basis: 100%;
+        margin-bottom: 20px; /* Dostosuj margines między kolumnami */
+    }
+
+    .sticky-footer .col:nth-child(2), .sticky-footer .col:nth-child(3) {
+        flex-basis: 100%;
+    }
+}

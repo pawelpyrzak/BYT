@@ -21,15 +21,20 @@ public class ReservationController {
     private final ReservationService service;
     private Reservation reservation;
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
+    @GetMapping("/reservation")
+    public String showReservationCottages() {
+        return "reservationsAll";
+    }
+
 
     @GetMapping("/reservation/{id}")
-    public String showLoginForm(HttpSession session, @PathVariable int id) {
-        session.setAttribute("id", 8);
-        session.setAttribute("Role","User");
+    public String showReservationForm(HttpSession session, @PathVariable int id) {
         if (session == null || session.getAttribute("id") == null) {
-            return "NoLogin";
+            LOGGER.error("No login");
+            return "redirect:/nologin";
         }
         if(id<=0||id>4){
+            LOGGER.error("bad id");
             throw new NotFoundException("złe id");
         }
         return "Reservation";
@@ -38,6 +43,7 @@ public class ReservationController {
     @PostMapping("/reservation/{cId}")
     public String validateData(Reservation reservation, HttpSession session, Model model, @PathVariable int cId) {
         try {
+            LOGGER.info("Sprawdzanie danych");
             reservation.setCottageId(cId);
             CusRes res = service.CheckData(reservation, (Integer) session.getAttribute("id"));
             this.reservation = res.getReservation();

@@ -59,7 +59,7 @@ html {
     display: block;
 }
 #signupForm {
-    height: 330px;
+    height: auto;
     overflow: hidden;
     transition: height 0.3s ease-in-out;
 }

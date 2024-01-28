@@ -54,7 +54,7 @@ html {
 .form-control {
     width: 100%;
     padding: 12px;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 20px;
@@ -76,14 +76,14 @@ html {
     background-color: #f5f5f5;
 }
 #loginForm {
-    height: 200px;
+    height: auto;
     overflow: hidden;
     transition: height 0.3s ease-in-out;
 }
 #password{
     width: 100%;
     padding: 12px;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 20px;

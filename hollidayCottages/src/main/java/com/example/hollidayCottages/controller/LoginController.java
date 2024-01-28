@@ -4,7 +4,6 @@ import com.example.hollidayCottages.Exceptions.ExceptionWithMessage;
 import com.example.hollidayCottages.model.User;
 import com.example.hollidayCottages.service.LoginService;
 import jakarta.servlet.http.HttpSession;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,6 +47,11 @@ public class LoginController {
     @GetMapping("/login")
     public String loginBadUrl() {
         return "redirect:/logins";
+    }
+
+    @GetMapping("/nologin")
+    public String NoLogin() {
+        return "NoLogin";
     }
 
 }
