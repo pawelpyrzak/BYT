@@ -9,26 +9,27 @@
 </head>
 
 <body>
-<div class="main">
+<header class="main">
     <div class="logo">
-        <a href="index.html"><img src="../static/images/logo5.png"></a>
+        <a href="index.html"><img src="../static/images/logo5.png" alt="Holliday Cottage Logo"></a>
         <div class="welcome-txt">
             <h2>Holliday Cottage</h2>
         </div>
     </div>
-</div>
-<div th:if="${error}">
-    <p class="error" th:text="${error}"></p>
+</header>
+
+<div th:if="${error}" class="error-msg">
+    <p th:text="${error}"></p>
 </div>
 
 <section class="info-section">
-    <h2 th:text="${cottage.getName()}">Opis </h2>
+    <h2 th:text="${cottage.getName()}">Opis</h2>
     <p th:text="${cottage.getDescription()}"></p>
 </section>
 
 <section class="info-section">
     <h2>Cena:</h2>
-    <p th:text="'Cena za noc:'+${cottage.getPricePerNight()}+'zł'"></p>
+    <p th:text="'Cena za noc: ' + ${cottage.getPricePerNight()} + 'zł'"></p>
 </section>
 
 <section class="info-section">
@@ -39,6 +40,9 @@
         <img th:src="@{'/images/domek' + ${cottage.id} + '/zdj3'}" alt="Domku Zdjęcie 3">
     </div>
 </section>
-<a th:href="'/reservation/'+${cottage.getId()}" class="link">Zarezerwuj</a>
+
+<a th:href="'/reservation/'+${cottage.getId()}" class="link-btn">Zarezerwuj</a>
 </body>
+
 </html>
+
