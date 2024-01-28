@@ -11,6 +11,7 @@
     <script src="../static/js/blur.js"></script>
     <script src="../static/js/footer.js"></script>
     <script src="../static/js/menu.js"></script>
+    <script src="../static/js/parallax.js"></script>
     <script src="../static/js/scrolldown.js"></script>
     <script src="../static/js/calendar.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -89,7 +90,7 @@
         <div class="wrapper">
             <div class="login-form" th:if="${session.id == null}">
                 <form action="/logins" method="post" th:action="@{/logins}">
-                    <h2>LOGIN</h2>
+                    <h2>Panel logowania</h2>
                     <div th:if="${error}">
                         <p class="error" th:text="${error}"></p>
                     </div>
@@ -99,11 +100,11 @@
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email"><br>
 
-                    <label for="password">Password</label>
+                    <label for="password">Hasło</label>
                     <input type="password" id="password" name="password"><br>
 
-                    <button type="submit">Login</button>
-                    <a href="/signup" class="ca">Create an account</a>
+                    <button type="submit">Zaloguj się</button>
+                    <a href="signUpForm.html" class="ca">Stwórz konto</a>
                 </form>
             </div>
         </div>
@@ -118,7 +119,7 @@
             <ul class="left">
                 <li><a href="loginForm.html">O nas</a></li><!--
                             -->
-                <li><a href="loginForm.html">Domki</a></li><!--
+                <li><a href="cottages.html">Domki</a></li><!--
                             -->
                 <li><a href="signUpForm.html">Galeria</a></li>
             </ul>
@@ -139,65 +140,145 @@
 <section class="about" id="about">
     <div class="main">
         <div class="about-text">
-            <h2>O nas</h2>
-            <h1>Lorem ipsum dolor sit amet</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo
-                consequat.</p>
+            <h2>Poznaj nas</h2>
+            <h1>Holiday Cottage - Twój wymarzony domek letniskowy</h1>
+            <p>
+                Witaj w Holiday Cottage - miejscu, gdzie komfort, natura i spokój łączą się, tworząc niezapomnianą atmosferę na letni wypoczynek. Nasz ośrodek położony jest w malowniczym otoczeniu, otoczony zielenią i zapewniający prywatność, co sprawia, że każdy pobyt u nas staje się wyjątkowym doświadczeniem.
+            </p>
+            <p>
+                Holiday Cottage cenimy każdego Gościa i dokładamy wszelkich starań, abyś czuł się tu jak w domu. Nasze komfortowe domki letniskowe są wyposażone we wszystko, co niezbędne do relaksu i wypoczynku. Dbamy o detale, aby stworzyć atmosferę sprzyjającą rodzinnej zabawie, romantycznym chwilom i odpoczynkowi na łonie natury.
+            </p>
+            <p>
+                Doświadcz radości spędzania czasu na świeżym powietrzu, odkrywaj okoliczne atrakcje, delektuj się urokami przyrody. Zapraszamy do Holiday Cottage, gdzie marzenia o idealnych wakacjach stają się rzeczywistością.
+            </p>
             <div class="btn">
-                <button type="button">Dowiedz sie wiecej</button>
+                <a href="aboutUs.html">
+                    <button type="button">Dowiedz się więcej</button>
+                </a>
             </div>
         </div>
 
         <div class="container21"><div class="att1">
-            <img src="../static/images/Cropped_Image.png">
+            <img src="../static/images/about1.png">
         </div>
             <div class="att2">
-                <img src="../static/images/Cropped_Image%20(1).png">
+                <img src="../static/images/about2.png">
             </div>
             <div class="att3">
-                <img src="../static/images/Image_Editor.png">
+                <img src="../static/images/about3.png">
             </div>
         </div>
 
         </div>
 </section>
 
+<div class="wrap">
+    <div class="parallax3">
+
+        <div class="header-cottages">
+            <h2>Odkryj Radość Wypoczynku </h2>
+            <h1>- Tajemnicze Uroki Naszych Domków Letniskowych!</h1>
+        </div>
+        <div class="tile">
+            <img src="../static/images/domek1.png"/>
+            <div class="text">
+                <h1>Słoneczne Ustronie</h1>
+                <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
+                <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tile">
+            <img src="../static/images/domek2.png"/>
+            <div class="text">
+                <h1>Letni Oazis</h1>
+                <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
+                <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tile">
+            <img src="../static/images/domek3.png"/>
+            <div class="text">
+                <h1>Gniazdo Marzeń</h1>
+                <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
+                <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tile">
+            <img src="../static/images/domek4.png"/>
+            <div class="text">
+                <h1>Błękitna podróż</h1>
+                <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
+                <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="parallax4">
+        <div class="header-cottages">
+            <p class="expanded-text">
+                Zapraszamy do Eksploracji Pełnej Oferty, Twój Odpoczynek Zasługuje na Wyjątkowość</p>
+        </div>
+        <div class="btn-cottages">
+            <a href="cottages.html">
+            <button type="button">Sprawdź ofertę</button>
+            </a>
+        </div>
+    </div>
+</div>
 
 
-<section class="attraction-section">
+<section class="surroundings-section">
     <div class="about-att-txt">
-        <h2>Atrakcje</h2>
-        <h1>Lorem ipsum dolor sit amet</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-            id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo
-            consequat.</p>
+        <h2>Okolica</h2>
+        <h1>Urokliwa miejscowość nad jeziorem</h1>
+        <p>Nasz ośrodek letniskowy położony jest w malowniczej miejscowości nad jeziorem, otoczonej bujną przyrodą i
+            spokojem. To idealne miejsce dla miłośników natury oraz osób pragnących oderwać się od zgiełku miejskiego życia.</p>
+
+        <p>W okolicy znajdziesz urokliwe trasy spacerowe, idealne dla rodzin z dziećmi, a także piękne plaże jeziora,
+            gdzie można wspaniale spędzić czas podczas letnich dni. Dodatkowo, bliskość lasów umożliwia organizację
+            pieszych wędrówek czy rowerowych przejażdżek, odkrywając piękno okolicznej przyrody.</p>
+
+        <p>Dla miłośników aktywności wodnych, nasz ośrodek oferuje dostęp do prywatnego pomostu nad jeziorem, gdzie
+            można korzystać z kajaków, rowerków wodnych czy po prostu zanurzyć się w orzeźwiających wodach jeziora.</p>
+
+        <p>Zapraszamy do naszego ośrodka, aby doświadczyć harmonii pomiędzy relaksem w domkach letniskowych a
+            ekscytującymi atrakcjami oferowanymi przez urokliwą okolicę.</p>
         <div class="btn">
-            <button type="button">Dowiedz sie wiecej</button>
+            <a href="surroundings.html">
+            <button type="button">Dowiedz się więcej</button>
+            </a>
         </div>
     </div>
 
     <div class="container3">
         <div class="att1">
-            <img src="../static/images/Cropped_Image.png">
+            <img src="../static/images/surr1.png">
         </div>
         <div class="att2">
-            <img src="../static/images/Cropped_Image%20(1).png">
+            <img src="../static/images/surr3.png">
         </div>
         <div class="att3">
             <img src="../static/images/Image_Editor.png">
@@ -205,45 +286,65 @@
     </div>
 </section>
 
-<div class="container4">
-    <div class="gradient-overlay-three"></div>
-    <div class="gradient-overlay-four"></div>
-</div>
-<div class="row">
-    <div class="about-houses-txt">
-        <h2>Nasze najpopularniejsze domki</h2>
-        <h1>Lorem ipsum dolor sit amet</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-            id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo
-            consequat.</p>
-    </div>
-    <div class="card-wrapper">
-        <div class="card card1">
-            <h5>Domek1</h5>
-        </div>
-        <div class="card card2">
-            <h5>Domek2</h5>
 
-        </div>
-        <div class="card card3">
-            <h5>Domek3</h5>
-        </div>
-        <div class="card card4">
-            <h5>Domek4</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore
-                magna aliqua.</p>
-        </div>
+<section class="baner">
+<div class="parallax">
+    <div class="overlay"></div>
+    <div class="section-header">
+        <h2>Czy jesteś gotowy na</h2>
+        <h1>Niezwykłe Doświadczenie?</h1>
     </div>
 </div>
 
+
+<div class="amenities-banner">
+    <div class="amenities">
+        <div class="amenity">
+            <i class="fas fa-wifi"></i>
+            <p>Bezpłatne Wi-Fi</p>
+        </div>
+        <div class="amenity">
+            <i class="fas fa-parking"></i>
+            <p>Darmowy parking</p>
+        </div>
+        <div class="amenity">
+            <i class="fas fa-swimming-pool"></i>
+            <p>Jezioro</p>
+        </div>
+        <div class="amenity">
+            <i class="fas fa-utensils"></i>
+            <p>Restauracja</p>
+        </div>
+        <div class="amenity">
+            <i class="fas fa-bicycle"></i>
+            <p>Wypożyczalnia rowerów</p>
+        </div>
+        <div class="amenity">
+            <i class="fas fa-spa"></i>
+            <p>Strefa spa</p>
+        </div>
+        <div class="amenity">
+            <i class="fas fa-golf-ball"></i>
+            <p>Pole golfowe</p>
+        </div>
+        <!-- Dodaj więcej ikon i opisów, według potrzeb -->
+    </div>
+</div>
+
+
+<div class="parallax2">
+    <div class="overlay"></div>
+    <div class="section-header">
+        <p class="expanded-text">Nasz ośrodek to idealne połączenie przygody i spokoju. Relaksuj się w naszych domkach, a następnie ruszaj na ekscytujące aktywności,
+            od kąpieli w jeziorze po zwiedzanie okolicznych atrakcji.</p>
+    </div>
+    <div class="btn-parallax">
+        <a href="reservation.html">
+        <button type="button">Zarezerwuj już teraz</button>
+        </a>
+    </div>
+</div>
+</section>
 
 
 
@@ -261,60 +362,54 @@
             <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vulputate id mi cursus scelerisque.
                 Phasellus sem lorem, aliquet vitae molestie ut, rhoncus quis erat.</p>
         </div>
-
-
         <div class="col">
-            <h3>Lorem ipsum
+            <h3>Śledź nas
                 <div class="underline"><span></span></div>
             </h3>
-            <p>dolor sit amet</p>
-            <p>consectetur adipiscing elit</p>
-            <p>sed do eiusmod tempor incididunt</p>
-            <p class="email-id">loremipsum@loremipsum.com</p>
-            <h4>+48 123456789</h4>
+            <div class="social-icons">
+                <a href="#" class="fab fa-facebook"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
         </div>
 
+
         <div class="col">
-            <h3>Links
+            <h3>Kontakt
+                <div class="underline"><span></span></div>
+            </h3>
+            <p>Adres firmy</p>
+            <p>Telefon: +48 123 456 789</p>
+            <p>Email: info@example.com</p>
+        </div>
+
+
+
+        <div class="col">
+            <h3>Szybkie linki
                 <div class="underline"><span></span></div>
             </h3>
             <ul>
-                <li><a href="">Lorem ipsum</a></li>
-                <li><a href="">Lorem ipsum</a></li>
-                <li><a href="">Lorem ipsum</a></li>
-                <li><a href="">Lorem ipsum</a></li>
-                <li><a href="">Lorem ipsum</a></li>
+                <li><a href="/terms">Warunki korzystania</a></li>
+                <li><a href="/privacy">Polityka prywatności</a></li>
+                <li><a href="/sitemap">Mapa strony</a></li>
             </ul>
         </div>
 
         <div class="col">
-            <h3>Newsletter
-                <div class="underline"><span></span></div>
-            </h3>
-            <form>
-                <i class="far fa-envelope"></i>
-                <input type="email" placeholder="Enter your email id" required>
-                <button type="submit"><i class="fas fa-arrow-right"></i></button>
-            </form>
-            <div class="social-icons">
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-twitter"></i>
-                <i class="fa-brands fa-instagram"></i>
-            </div>
-            <div class="col">
                 <h3>Nasza lokalizacja
                     <div class="underline"><span></span></div>
                 </h3>
                 <div class="map">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15485.850699849016!2d18.493072615924838!3d54.76353161196792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fdad42e75d7e95%3A0x558d767b1dfcef46!2zQ2hhxYJ1cHkgUGxhxbxh!5e0!3m2!1sen!2spl!4v1705071641315!5m2!1sen!2spl"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            width="400" height="150" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
-    </div>
+
     <hr>
-    <p class="copyright"></p>
+    <p class="copyright">© 2024 Nazwa Twojej Firmy. Wszelkie prawa zastrzeżone.</p>
 </footer>
 
 </body>

@@ -2,7 +2,34 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
+.welcome-txt h2{
+    font-family: 'Poppins' , sans-serif;
+    font-size: 18px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-bottom: 0px;
+    margin-top: -10px;
+}
 
+.logo {
+    text-align: center;
+}
+.logo img:hover {
+    filter: brightness(0%);
+}
+.logo img {
+    display: block;
+    margin: 10px auto;
+    margin-left: 45%;
+    max-width: 12%;
+    height: auto;
+}
+.welcome-txt {
+    text-align: center;
+    margin-left: 20px;
+    padding-bottom: 0;
+}
 h1 {
     color: #333;
 }
