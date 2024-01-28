@@ -1,0 +1,46 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url("../images/ai.jpg");
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    padding-left: 8%;
+    padding-right: 8%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+html {
+    height: 100%;
+}
+
+.welcome-txt h2{
+    font-family: 'Poppins' , sans-serif;
+    font-size: 18px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-bottom: 0px;
+    margin-top: -10px;
+}
+
+.logo {
+    text-align: center;
+}
+.logo img:hover {
+    filter: brightness(0%);
+}
+.logo img {
+    display: block;
+    margin: 10px auto;
+    margin-left: 45%;
+    max-width: 12%;
+    height: auto;
+}
+.welcome-txt {
+    text-align: center;
+    margin-left: 20px;
+    padding-bottom: 0;
+}
