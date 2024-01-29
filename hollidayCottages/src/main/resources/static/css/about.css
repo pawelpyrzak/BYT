@@ -1,15 +1,18 @@
 
 body {
-    font-family: 'Poppins', sans-serif;
     background-image: url("../images/ai.jpg");
+    background-attachment: fixed;
+    font-family: 'Poppins', sans-serif;
     background-position: center;
-    width: 100%;
-    height: 100%;
     background-size: cover;
     padding-left: 8%;
     padding-right: 8%;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: auto;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
 }
 
 html {
@@ -43,4 +46,79 @@ html {
     text-align: center;
     margin-left: 20px;
     padding-bottom: 0;
+}
+
+
+.about-text{
+
+
+}
+
+
+
+
+
+.about-text h1{
+    font-size: 65px;
+    color: #f9f9fc;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.about-text2 h1{
+    font-size: 65px;
+    color: #f9f9fc;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.about-text3 h1{
+    font-size: 65px;
+    color: #f9f9fc;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.about-text p{
+    font-family: 'Poppins' , sans-serif;
+    font-size: 16px;
+    color: #f9f9fc;
+    line-height: 30px;
+    margin-bottom: 35px;
+}
+.rounded-box {
+    position: absolute;
+   margin-left:50px ;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: justify;
+}
+
+.about-text2,
+.about-text3 {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: justify;
+
+}
+
+h1, h2 {
+    color: #f9f9fc;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #f9f9fc;
 }
