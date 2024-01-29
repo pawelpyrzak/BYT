@@ -49,10 +49,7 @@ html {
 }
 
 
-.about-text{
 
-
-}
 
 
 
@@ -60,50 +57,81 @@ html {
 
 .about-text h1{
     font-size: 65px;
-    color: #f9f9fc;
+    color: #3e6464;
     font-weight: 700;
     margin-bottom: 20px;
 }
 .about-text2 h1{
     font-size: 65px;
-    color: #f9f9fc;
+    color: #3e6464;
     font-weight: 700;
     margin-bottom: 20px;
 }
 .about-text3 h1{
     font-size: 65px;
-    color: #f9f9fc;
+    color: #3e6464;
     font-weight: 700;
     margin-bottom: 20px;
 }
 .about-text p{
     font-family: 'Poppins' , sans-serif;
     font-size: 16px;
-    color: #f9f9fc;
+    color: #000000;
     line-height: 30px;
     margin-bottom: 35px;
 }
-.rounded-box {
-    position: absolute;
-   margin-left:50px ;
+.about-text2 p{
+    font-family: 'Poppins' , sans-serif;
+    font-size: 16px;
+    color: #000000;
+    line-height: 30px;
+    margin-bottom: 35px;
+}
+.about-text3 p{
+    font-family: 'Poppins' , sans-serif;
+    font-size: 16px;
+    color: #1c1717;
+    line-height: 30px;
+    margin-bottom: 35px;
 }
 
+
+.about{
+
+
+    border-top: 100px;
+
+}
 .about-text {
     max-width: 800px;
-    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.77);
     padding: 20px;
     text-align: justify;
+    border: 2px solid #f9f9fc;
+    margin: 100px auto 0;
+
+
+
 }
 
-.about-text2,
+.about-text2{
+
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.77);
+    padding: 20px;
+    text-align: justify;
+    border: 2px solid #f9f9fc;
+    margin: 100px auto 0;
+}
 .about-text3 {
     max-width: 800px;
-    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.77);
     padding: 20px;
     text-align: justify;
-
+    border: 2px solid #f9f9fc;
+    margin: 100px auto 0;
+    margin-bottom: 100px;
 }
-
 h1, h2 {
     color: #f9f9fc;
 }
